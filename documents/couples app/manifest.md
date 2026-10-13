@@ -40,3 +40,9 @@ Rezervni put: iOS Share Sheet (`navigator.share` sa fajlom).
 ## Moguća dalja nadogradnja
 - Vlastiti ntfy server (privatnost, duži rok čuvanja priloga).
 - Prikaz primljenih crteža unutar aplikacije.
+
+## Preostalo (stanje na 2026-10-13, commit 4f147aa)
+1. Uvoz na Vercel: vercel.com/nemanja-app, projekat `Couples-app`, bez build komande i output foldera.
+2. Prvi test na dva iPhonea: Safari → Dodaj na početni ekran, ntfy iz App Storea, isti kod, uloge A i B, "Pošalji test sebi", pa crtež.
+3. Provjeriti nepotvrđeno (vidi gore). Ako slanje iz preglednika ne radi (CORS), prebaciti slanje na malu Vercel funkciju koja prosljeđuje PUT na ntfy.sh.
+4. Po potrebi kopirati `documents/couples app/` u lokalni Documents.
