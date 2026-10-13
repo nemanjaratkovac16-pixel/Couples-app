@@ -13,6 +13,14 @@
   const canvas = $('canvas');
   const ctx = canvas.getContext('2d');
 
+  // --- bez zumiranja prstima (iOS Safari ignoriše user-scalable=no) ---
+  ['gesturestart', 'gesturechange', 'gestureend'].forEach((type) => {
+    document.addEventListener(type, (e) => e.preventDefault(), { passive: false });
+  });
+  document.addEventListener('touchmove', (e) => {
+    if (e.touches.length > 1) e.preventDefault();
+  }, { passive: false });
+
   // --- pohrana (localStorage može biti nedostupan) ---
   let memory = null;
   function loadConfig() {
