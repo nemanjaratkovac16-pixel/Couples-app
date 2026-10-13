@@ -1,0 +1,14 @@
+{
+  "name": "Couples App",
+  "short_name": "Couples",
+  "description": "Nacrtaj nešto i pošalji partneru kao notifikaciju.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff4f5",
+  "theme_color": "#fff4f5",
+  "lang": "bs",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

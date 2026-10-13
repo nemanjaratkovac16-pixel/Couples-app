@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="bs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Couples App</title>
+<meta name="description" content="Nacrtaj nešto na telefonu i pošalji partneru kao notifikaciju.">
+<meta name="theme-color" content="#fff4f5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1b1417" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Couples">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="app">
+
+  <header class="top">
+    <h1>Couples App</h1>
+    <button type="button" id="open-settings" class="link-btn">Postavke</button>
+  </header>
+
+  <!-- Postavke -->
+  <section id="screen-settings" hidden aria-labelledby="settings-title">
+    <h2 id="settings-title">Postavke</h2>
+    <form id="settings-form" autocomplete="off">
+      <div class="field">
+        <label for="name">Tvoje ime</label>
+        <input id="name" name="name" type="text" maxlength="30" required placeholder="npr. Nemanja">
+      </div>
+
+      <fieldset class="field">
+        <legend>Ja sam</legend>
+        <div class="seg">
+          <input type="radio" id="role-a" name="role" value="a" checked>
+          <label for="role-a">Osoba A</label>
+          <input type="radio" id="role-b" name="role" value="b">
+          <label for="role-b">Osoba B</label>
+        </div>
+        <p class="hint">Jedno od vas bira A, drugo B.</p>
+      </fieldset>
+
+      <div class="field">
+        <label for="code">Zajednički kod</label>
+        <div class="row">
+          <input id="code" name="code" type="text" inputmode="text" autocapitalize="none" spellcheck="false" required minlength="12" maxlength="40" pattern="[a-z0-9]{12,40}">
+          <button type="button" id="gen-code" class="btn ghost">Novi kod</button>
+        </div>
+        <p class="hint">Isti kod upišite oboje. Ko ga zna, može čitati i pisati u vaše teme, zato ga ne dijelite dalje.</p>
+      </div>
+
+      <div id="topics" class="topics" hidden>
+        <h3>Podesi ntfy na svom telefonu</h3>
+        <ol>
+          <li>Instaliraj aplikaciju <strong>ntfy</strong> iz App Storea i dozvoli notifikacije.</li>
+          <li>U njoj dodaj temu na serveru <code>ntfy.sh</code>:
+            <div class="copy-line"><code id="topic-in">-</code><button type="button" id="copy-topic" class="btn ghost small">Kopiraj</button></div>
+          </li>
+          <li>Partner dodaje svoju temu (suprotno slovo u imenu).</li>
+        </ol>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn primary">Sačuvaj</button>
+        <button type="button" id="test-self" class="btn ghost">Pošalji test sebi</button>
+      </div>
+      <p id="settings-status" class="status" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <!-- Crtanje -->
+  <section id="screen-draw" hidden aria-label="Crtanje">
+    <div class="board">
+      <canvas id="canvas" width="720" height="720" aria-label="Površina za crtanje"></canvas>
+    </div>
+
+    <div class="tools" role="group" aria-label="Boje">
+      <div id="colors" class="colors"></div>
+    </div>
+
+    <div class="tools two" role="group" aria-label="Alati">
+      <div id="widths" class="widths"></div>
+      <div class="row-tools">
+        <button type="button" id="undo" class="btn ghost">Poništi</button>
+        <button type="button" id="clear" class="btn ghost">Obriši sve</button>
+      </div>
+    </div>
+
+    <div class="actions send">
+      <button type="button" id="send" class="btn primary big">Pošalji partneru</button>
+      <button type="button" id="share" class="btn ghost big">Podijeli (iMessage)</button>
+    </div>
+    <p id="draw-status" class="status" role="status" aria-live="polite"></p>
+  </section>
+
+</main>
+<script src="app.js"></script>
+</body>
+</html>
